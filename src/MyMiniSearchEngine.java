@@ -19,6 +19,10 @@ public class MyMiniSearchEngine {
     // assume documents only contain alphabetical words separated by white spaces.
     private void index(List<String> texts) {
         //homework
+        Map<String, List<List<Integer>>> indexes = new Map<String, List<List<Integer>>>();
+        for(int i = 0; i < texts.size(); i++) {
+            String[] tokens = texts.get(i).split(" ");
+        }
     }
 
     // search(key) return all the document ids where the given key phrase appears.
