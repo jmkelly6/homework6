@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,9 +20,19 @@ public class MyMiniSearchEngine {
     // assume documents only contain alphabetical words separated by white spaces.
     private void index(List<String> texts) {
         //homework
-        Map<String, List<List<Integer>>> indexes = new Map<String, List<List<Integer>>>();
-        for(int i = 0; i < texts.size(); i++) {
-            String[] tokens = texts.get(i).split(" ");
+        indexes = new HashMap<>();
+        for(int doc = 0; doc < texts.size(); doc++) {
+            String[] tokens = texts.get(doc).split(" ");
+            List<List<Integer>> currentWordLocations = new ArrayList<>();
+            for(int wordKey = 0; wordKey < tokens.length; wordKey++) {
+                for(int i = 0; i < texts.size(); i++) {
+                    currentWordLocations.add(new ArrayList<>());
+                }
+                if(!indexes.containsKey(currentWordLocations)){
+                    indexes.put(tokens[wordKey], currentWordLocations);
+                }
+                indexes.get(tokens[wordKey]).get(doc).add(wordKey);
+            }
         }
     }
 
